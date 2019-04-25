@@ -1,0 +1,30 @@
+{
+  "name": "andrehadianto",
+  "version": "1.0.0",
+  "description": "For more information, do contact me!",
+  "main": "index.js",
+  "repository": "https://github.com/andrehadianto/andrehadianto.com",
+  "author": "Andre Hadianto",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack-dev-server --watch"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "7.1.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "live-server": "^1.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "3.1.0",
+    "webpack-dev-server": "2.5.1"
+  },
+  "devDependencies": {}
+}
