@@ -1,0 +1,29 @@
+.home-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: row;
+}
+
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+}
+
+.home-nav {
+    display: flex;
+    height: 36px;
+    padding: 
+}
+
+.home-content {
+    display: flex;
+}
+
+.hero-wrapper {
+    display: flex;
+    width: 50vw;
+    align-items: center;
+    justify-content: center;
+}
