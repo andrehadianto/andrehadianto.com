@@ -1,9 +1,35 @@
+/* Custom Color */
+:root {
+    --background-color: #00171F;
+    --primary-one: #003459;
+    --primary-two: #007EA7;
+    --primary-three: #00A8E8;
+
+    --secondary-red: #EF233C;
+    --secondary-yellow: #FEBC11;
+
+    --success-green: #4DBD74;
+    --light-color: #F3F4F5;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    padding: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* base */
 html {
     background-color: #f6f6f6;
-    color: #555;
-    font-family: Helvetica,"Khyay-Regular", Arial, sans-serif;
+    color: var(--background-color);
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 100;
-    font-size: 120%;
+    font-size: 100%;
     text-rendering: optimizeLegibility;
 }
 
@@ -12,7 +38,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: scroll;
-    color: #f2f2f2;
+    color: var(--light-color);
     background-color: #242426;
     line-height: 1.75;
 }

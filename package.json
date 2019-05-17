@@ -5,6 +5,10 @@
   "main": "index.js",
   "repository": "https://github.com/andrehadianto/andrehadianto.com",
   "author": "Andre Hadianto",
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
   "license": "MIT",
   "scripts": {
     "build": "webpack-dev-server --watch"
@@ -19,6 +23,7 @@
     "file-loader": "^3.0.1",
     "live-server": "^1.2.1",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "style-loader": "^0.23.1",
