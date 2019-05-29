@@ -16,8 +16,8 @@ module.exports = (env = {}) => ({
             test: /\.(png|jpg)$/,
             loader: 'url-loader?limit=8192'
         }, {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            test: /\.scss$/,
+            use: ['style-loader', 'css-loader', 'sass-loader']
         }]
     },
     devtool: 'cheap-module-eval-source-map',
