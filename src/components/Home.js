@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from '../resources/images/hero-logo.png';
+import logo from '../resources/images/logo.png';
 import { Nav, Navbar } from 'react-bootstrap';
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 class Home extends React.Component {
     render() {
@@ -26,6 +27,10 @@ class Home extends React.Component {
                     </div>
                     <div className="home-widgets">
                         <div className="social-widgets">
+                            <a href="https://github.com/andrehadianto" className="widget"><FaGithub/></a>
+                            <a href="https://sg.linkedin.com/in/andre-hadianto-621570175" className="widget"><FaLinkedin/></a>
+                            <a href="https://www.instagram.com/andrehl96/?hl=en" className="widget"><FaInstagram/></a>
+                            <a href="mailto:andrehadianto@gmail.com" className="widget"><FaEnvelope/></a>
 
                         </div>
                     </div>
