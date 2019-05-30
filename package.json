@@ -11,8 +11,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build-dev": "webpack --port 8080 --watch",
-    "build": "webpack-dev-server --port 8080 --watch"
+    "build-local": "webpack-dev-server --watch",
+    "start": "node server.js"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -21,6 +21,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^2.1.1",
+    "express": "^4.17.1",
     "file-loader": "^3.0.1",
     "live-server": "^1.2.1",
     "node-sass": "^4.12.0",
