@@ -5,6 +5,13 @@ import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 class Home extends React.Component {
     render() {
+        let widgets = [
+            {widget: <FaGithub/>, link: "https://github.com/andrehadianto"},
+            {widget: <FaLinkedin/>, link: "https://sg.linkedin.com/in/andre-hadianto-621570175"},
+            {widget: <FaInstagram/>, link: "https://www.instagram.com/andrehl96/?hl=en"},
+            {widget: <FaEnvelope/>, link: "mailto:andrehadianto@gmail.com"}
+        ];
+
         return (
             <div className="home-container">
                 {/* <div className="home-nav">
@@ -27,10 +34,11 @@ class Home extends React.Component {
                     </div>
                     <div className="home-widgets">
                         <div className="social-widgets">
-                            <a href="https://github.com/andrehadianto" className="widget"><FaGithub/></a>
-                            <a href="https://sg.linkedin.com/in/andre-hadianto-621570175" className="widget"><FaLinkedin/></a>
-                            <a href="https://www.instagram.com/andrehl96/?hl=en" className="widget"><FaInstagram/></a>
-                            <a href="mailto:andrehadianto@gmail.com" className="widget"><FaEnvelope/></a>
+                            {widgets.map((widget, index) => {
+                                return (
+                                    <a key={index} href={widget.link} className="widget" target="_blank">{widget.widget}</a>
+                                )
+                            })}
 
                         </div>
                     </div>
