@@ -85,5 +85,8 @@ typings/
 
 # React Dev .output bundle
 bundle.js
+bundle.js.map
+styles.css
+styles.css.map
 
 # End of https://www.gitignore.io/api/node
