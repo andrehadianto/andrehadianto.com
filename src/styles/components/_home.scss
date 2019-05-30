@@ -35,7 +35,7 @@
             height: 200px;
             align-items: center;
             justify-content: center;
-            margin-bottom: 25px;
+            margin-bottom:20px;
 
             #logo {
                 height: 100%;
@@ -45,6 +45,9 @@
             display: flex;
             font-family: 'Comfortaa', cursive;
             color: $light-color;
+            h2 {
+                font-size: 3rem;
+            }
         }
         .home-widgets {
             display: flex;

@@ -7,7 +7,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="home-container">
-                <div className="home-nav">
+                {/* <div className="home-nav">
                     <Navbar expand="md">
                         <Nav className="mr-auto">
                             <Nav.Link>About Me</Nav.Link>
@@ -16,7 +16,7 @@ class Home extends React.Component {
                             <Nav.Link>Contact</Nav.Link>
                         </Nav>
                     </Navbar>
-                </div>           
+                </div>            */}
 
                 <div className="home-content">
                     <div className="hero-logo">
