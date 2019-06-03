@@ -13,12 +13,13 @@
 
         .nav-link {
             color: $light-color;
-        }
-        .nav-link:hover {
+            text-decoration: none;
             transition: color 0.3s;
-            color: rgba(243,244,245,0.568);
+            &:hover {
+                color: rgba(243,244,245,0.568);
+            }
         }
-
+        
     }
     .home-content {
         display: flex;
@@ -55,13 +56,14 @@
 
             .widget {
                 color: $light-color;
-                font-size: 1.5rem;
+                font-size: 2rem;
                 margin-right: 20px;
-            }
-            .widget:hover {
                 transition: color 0.3s;
-                color: rgba(243, 244, 245, 0.568);
+                &:hover {
+                    color: rgba(243, 244, 245, 0.568);
+                }
             }
+            
         }
     }
 }
