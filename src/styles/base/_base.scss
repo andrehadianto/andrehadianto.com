@@ -11,6 +11,10 @@ $secondary-yellow: #FEBC11;
 $success-green: #4DBD74;
 $light-color: #F3F4F5;
 
+/* Custom Size */
+$break-ipad: 769px;
+$break-iphone: 376px;
+
 ::-webkit-scrollbar {
     display: none;
 }
