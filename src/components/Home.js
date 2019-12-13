@@ -9,7 +9,7 @@ class Home extends React.Component {
             {widget: <FaGithub/>, link: "https://github.com/andrehadianto"},
             {widget: <FaLinkedin/>, link: "https://sg.linkedin.com/in/andre-hadianto-621570175"},
             {widget: <FaInstagram/>, link: "https://www.instagram.com/andrehl96/?hl=en"},
-            {widget: <FaEnvelope/>, link: "mailto:andrehadianto@gmail.com"}
+            {widget: <FaEnvelope/>, link: "mailto:andrehadiantolesmana@gmail.com"}
         ];
 
         return (
