@@ -4,9 +4,9 @@ runs:
   using: "composite"
   steps:
     - name: Setup Node.js ⚙️
-    uses: actions/setup-node@v4
-    with:
-      node-version: 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
 
     - name: Install pnpm
       uses: pnpm/action-setup@v2 # I try both v2 or v2.2.2
