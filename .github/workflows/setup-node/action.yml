@@ -3,10 +3,16 @@ description: "Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependenci
 runs:
   using: "composite"
   steps:
+    
     - name: Setup Node.js ⚙️
-      uses: actions/setup-node@v4
+    uses: actions/setup-node@v4
+    with:
+      node-version: 20
+
+      - name: Install pnpm
+      uses: pnpm/action-setup@v2 # I try both v2 or v2.2.2
       with:
-        node-version: 20
+        version: 8
 
     - name: Cache dependencies ⚡
       id: cache_dependencies
@@ -15,12 +21,8 @@ runs:
         path: node_modules
         key: node-modules-${{ hashFiles('package-lock.json') }}
 
-    - name: Install pnpm
-      uses: pnpm/action-setup@v2 # I try both v2 or v2.2.2
-      with:
-        version: 8
 
     - name: Install dependencies 🔧
       shell: bash
       if: steps.cache_dependencies.outputs.cache-hit != 'true'
-      run: pnpm install
+      - run: pnpm install --frozen-lockfile
