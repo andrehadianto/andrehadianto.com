@@ -1,45 +1,36 @@
 {
-  "name": "andrehadianto",
-  "version": "1.0.0",
-  "description": "For more information, do contact me!",
-  "main": "index.js",
-  "repository": "https://github.com/andrehadianto/andrehadianto.com",
-  "author": "Andre Hadianto",
-  "engines": {
-    "node": "10.15.3",
-    "npm": "6.4.1"
-  },
-  "license": "MIT",
+  "name": "andrehadianto.com",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build:prod": "webpack -p --env production --mode=production",
-    "build:dev": "webpack-dev-server --watch",
-    "start": "node server.js",
-    "heroku-postbuild": "npm run build:prod"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prettier": "prettier --write 'src/**/*.{js,jsx,ts,tsx,scss}'"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.8",
-    "react-dom": "^16.8.6",
-    "react-icons": "^3.7.0",
-    "react-router-dom": "^5.0.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "url-loader": "^1.1.2"
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "sass": "^1.77.8"
   },
   "devDependencies": {
-    "css-loader": "^2.1.1",
-    "file-loader": "^3.0.1",
-    "live-server": "^1.2.1",
-    "node-sass": "^4.12.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "7.1.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "nodemon": "^1.19.1",
-    "webpack": "4.32.2",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "3.4.1"
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.35.0",
+    "postcss": "^8",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
