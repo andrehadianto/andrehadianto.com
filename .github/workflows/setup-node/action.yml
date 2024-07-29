@@ -24,9 +24,3 @@ runs:
       shell: bash
       if: steps.cache_dependencies.outputs.cache-hit != 'true'
       run: pnpm install
-
-    - name: Format the code
-      run: pnpm run prettier
-
-    - name: Check the code style
-      run: pnpm run lint
