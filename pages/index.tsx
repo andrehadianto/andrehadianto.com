@@ -76,7 +76,7 @@ export default function Home() {
               alt="pfp"
               className="h-18 w-18 rounded-full"
               height={72}
-              src={"andrehadianto.com/assets/pfp.png"}
+              src="https://andrehadianto.github.io/andrehadianto.com/assets/pfp.png"
               width={72}
             />
             <Text as="h3" className="text-lg font-bold">
