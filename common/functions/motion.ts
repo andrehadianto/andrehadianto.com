@@ -1,6 +1,7 @@
 export const flyInMotion = (
   direction: "up" | "down" | "left" | "right",
   distance = 100,
+  delay = 0,
 ) => {
   const initial = {
     opacity: 0,
@@ -8,7 +9,7 @@ export const flyInMotion = (
     y: direction === "up" ? -distance : direction === "down" ? distance : 0,
   };
   const animate = { opacity: 1, x: 0, y: 0 };
-  return { initial, animate, transition: { duration: 0.5 } };
+  return { initial, animate, transition: { duration: 0.5, delay } };
 };
 
 export const fadeInMotion = () => ({

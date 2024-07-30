@@ -32,24 +32,18 @@ export default function Home() {
         value={selectedtab}
         onValueChange={setSelectedTab}
       />
-      <div className="grid h-full w-full grid-flow-col grid-rows-3 gap-4">
+      <div className="grid h-full w-full grid-cols-3 grid-rows-3 gap-4">
         <motion.div
-          {...flyInMotion("left")}
+          {...flyInMotion("left", 100, 0.2)}
           className="col-span-1 row-span-2 rounded-md bg-red-400/10"
         >
           01
         </motion.div>
         <motion.div
-          {...flyInMotion("up")}
+          {...flyInMotion("down", 100, 0.4)}
           className="col-span-2 row-span-1 rounded-md bg-red-400/10"
         >
           02
-        </motion.div>
-        <motion.div
-          {...flyInMotion("right")}
-          className="col-span-2 row-span-1 rounded-md bg-red-400/10"
-        >
-          03
         </motion.div>
         <motion.div
           {...fadeInMotion()}
@@ -59,19 +53,28 @@ export default function Home() {
             <Image
               unoptimized
               alt="pfp"
-              className="h-18 w-18 rounded-full"
+              className="h-10 w-10 md:h-18 md:w-18 rounded-full"
               height={72}
               src="https://andrehadianto.github.io/andrehadianto.com/assets/pfp.png"
               width={72}
             />
-            <Text as="h3" className="text-lg font-bold">
+            <Text
+              as="h3"
+              className="text-balance text-center text-sm font-bold md:text-lg"
+            >
               Andre Hadianto Lesmana
             </Text>
           </div>
         </motion.div>
         <motion.div
-          {...flyInMotion("down")}
+          {...flyInMotion("up", 100, 0.6)}
           className="col-span-1 row-span-2 rounded-md bg-red-400/10"
+        >
+          03
+        </motion.div>
+        <motion.div
+          {...flyInMotion("right", 100, 0.8)}
+          className="col-span-2 row-span-1 rounded-md bg-red-400/10"
         >
           05
         </motion.div>
