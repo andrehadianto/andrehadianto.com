@@ -10,10 +10,15 @@
     "prettier": "prettier --write 'src/**/*.{js,jsx,ts,tsx,scss}'"
   },
   "dependencies": {
+    "@iconify-icon/react": "^2.1.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.19",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "tailwind-merge": "^2.4.0",
+    "tailwind-variants": "^0.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",

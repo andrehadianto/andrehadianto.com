@@ -2,32 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    font-size: 16px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+
+    @apply bg-bg-base;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --font-inter: "Inter", sans-serif;
+  }
+
+  html,
+  body,
+  #__next {
+    height: calc(
+      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+  }
+
+  .h-screen-safe {
+    height: calc(
+      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+    height: calc(
+      100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+  }
+
+  .h-screen-safe-no-footer {
+    height: calc(
+      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 80px
+    );
+    height: calc(
+      100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 80px
+    );
+  }
+}
+
+// text area resizer
+::-webkit-resizer {
+  display: none;
+}
+
+// prevent layout shit in iconify-icon
+// https://iconify.design/docs/iconify-icon/#layout-shift
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
 }
