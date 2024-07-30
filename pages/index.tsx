@@ -47,7 +47,7 @@ export default function Home() {
           </div>
         </motion.div>
         <motion.div
-          {...flyInMotion("down", 100, 0.4)}
+          {...flyInMotion("up", 100, 0.4)}
           className="col-span-2 row-span-1 min-h-40 rounded-md bg-primary-default p-2 sm:col-span-2"
         >
           <div className="flex flex-col gap-2">
@@ -90,7 +90,7 @@ export default function Home() {
           </div>
         </motion.div>
         <motion.div
-          {...flyInMotion("up", 100, 0.6)}
+          {...flyInMotion("right", 100, 0.6)}
           className="col-span-2 row-span-1 min-h-40 rounded-md bg-[#FFD074] p-2 sm:col-span-1 sm:row-span-2"
         >
           <div className="flex flex-col gap-2">
@@ -103,7 +103,7 @@ export default function Home() {
           </div>
         </motion.div>
         <motion.div
-          {...flyInMotion("right", 100, 0.8)}
+          {...flyInMotion("down", 100, 0.8)}
           className="col-span-2 row-span-1 min-h-40 rounded-md bg-nice1 p-2"
         >
           <div className="flex flex-col gap-2">
