@@ -1,11 +1,17 @@
+import { motion } from "framer-motion";
+
 import { Button } from "@/common/components/Button";
 import { Icon } from "@/common/components/CustomIcon";
 import { Text } from "@/common/components/Text";
 import { MY_EMAIL, Links } from "@/common/constants/links";
+import { flyInMotion } from "@/common/functions";
 
 export const Footer = () => {
   return (
-    <footer className="fixed bottom-0 z-header w-full border-t border-border-base px-2 py-2 after:pointer-events-none after:absolute after:inset-0 after:border-t-2 after:border-t-white/20">
+    <motion.footer
+      {...flyInMotion("down")}
+      className="fixed bottom-0 z-header w-full border-t border-border-base px-2 py-2 after:pointer-events-none after:absolute after:inset-0 after:border-t-2 after:border-t-white/20"
+    >
       <div className="mx-1 flex h-full items-center justify-between sm:mx-2 md:mx-3 lg:mx-4">
         <div className="flex flex-1 justify-start">
           <Text
@@ -67,6 +73,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };

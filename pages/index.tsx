@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { SegmentedControl } from "@/common/components/SegmentedControl";
 import { Text } from "@/common/components/Text";
+import { fadeInMotion, flyInMotion } from "@/common/functions";
 
 export default function Home() {
   const [selectedtab, setSelectedTab] = useState("home");
@@ -22,22 +23,6 @@ export default function Home() {
       value: "contact",
     },
   ];
-
-  const flyInMotion = (direction: "up" | "down" | "left" | "right") => {
-    const initial = {
-      opacity: 0,
-      x: direction === "left" ? -100 : direction === "right" ? 100 : 0,
-      y: direction === "up" ? -100 : direction === "down" ? 100 : 0,
-    };
-    const animate = { opacity: 1, x: 0, y: 0 };
-    return { initial, animate, transition: { duration: 0.5 } };
-  };
-
-  const fadeInMotion = () => ({
-    initial: { opacity: 0, scale: 0.5 },
-    animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.5 },
-  });
 
   return (
     <main className="h-screen-safe-no-footer mx-auto flex max-w-screen-xl flex-col items-center gap-10 px-2 py-10 md:px-10 lg:px-24">
