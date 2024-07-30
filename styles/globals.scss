@@ -54,6 +54,15 @@ input[type="number"]::-webkit-outer-spin-button {
       100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom)
     );
   }
+
+  .h-screen-safe-no-footer {
+    height: calc(
+      100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 80px
+    );
+    height: calc(
+      100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 80px
+    );
+  }
 }
 
 // text area resizer

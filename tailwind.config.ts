@@ -56,6 +56,7 @@ const config: Config = {
         success: "#29C244",
         error: "#E31E1E",
         warning: "#FB9F05",
+        nice1: "#7289da",
       },
     },
   },

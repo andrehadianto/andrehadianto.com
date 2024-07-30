@@ -5,13 +5,16 @@ import { MY_EMAIL, Links } from "@/common/constants/links";
 
 export const Footer = () => {
   return (
-    <footer className="z-header border-border-base fixed bottom-0 w-full border-t px-2 py-2">
-      <div className="mx-1 flex items-center justify-between sm:mx-2 md:mx-3 lg:mx-4">
+    <footer className="fixed bottom-0 z-header w-full border-t border-border-base px-2 py-2 after:pointer-events-none after:absolute after:inset-0 after:border-t-2 after:border-t-white/20">
+      <div className="mx-1 flex h-full items-center justify-between sm:mx-2 md:mx-3 lg:mx-4">
         <div className="flex flex-1 justify-start">
-          <Text as="p" className="font-bold">{`// Designer, Developer`}</Text>
+          <Text
+            as="p"
+            className="text-xs font-bold sm:text-sm lg:text-base"
+          >{`// Designer, Developer`}</Text>
         </div>
         <div className="flex flex-1 justify-center">
-          <div className="border-border-base flex w-fit items-center gap-2 border p-2">
+          <div className="flex w-fit items-center gap-2 rounded-md border border-border-base p-2">
             <Button
               external
               iconOnly
@@ -20,10 +23,10 @@ export const Footer = () => {
               variant="ghost"
             >
               <Icon
-                className="h-8 w-8"
-                height={32}
+                className="h-6 w-6"
+                height={24}
                 icon="lucide:github"
-                width={32}
+                width={24}
               />
             </Button>
             <Button
@@ -34,25 +37,27 @@ export const Footer = () => {
               variant="ghost"
             >
               <Icon
-                className="h-8 w-8"
-                height={32}
+                className="h-6 w-6"
+                height={24}
                 icon="lucide:linkedin"
-                width={32}
+                width={24}
               />
             </Button>
           </div>
         </div>
         <div className="flex flex-1 justify-end">
-          <div className="border-border-base flex w-fit items-center gap-2 border p-2">
+          <div className="flex h-16 w-fit min-w-16 items-center justify-center gap-2 rounded-md border border-border-base p-2">
             <Button iconOnly variant="ghost">
               <Icon
-                className="h-8 w-8"
-                height={32}
+                className="h-6 w-6"
+                height={24}
                 icon="lucide:mail"
-                width={32}
+                width={24}
               />
             </Button>
-            <Text>{MY_EMAIL}</Text>
+            <Text as="p" className="hidden md:block">
+              {MY_EMAIL}
+            </Text>
           </div>
         </div>
       </div>
