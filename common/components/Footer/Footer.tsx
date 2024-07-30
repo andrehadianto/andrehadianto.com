@@ -47,7 +47,13 @@ export const Footer = () => {
         </div>
         <div className="flex flex-1 justify-end">
           <div className="flex h-16 w-fit min-w-16 items-center justify-center gap-2 rounded-md border border-border-base p-2">
-            <Button iconOnly variant="ghost">
+            <Button
+              external
+              iconOnly
+              as="a"
+              href="mailto:andrehadiantolesmana@gmail.com"
+              variant="ghost"
+            >
               <Icon
                 className="h-6 w-6"
                 height={24}
