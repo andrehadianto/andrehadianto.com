@@ -1,4 +1,5 @@
 import { CoreLayout } from "@/common/components/CoreLayout";
+import { PageHead } from "@/common/components/PageHead";
 import { inter } from "@/common/fonts";
 
 import type { AppProps } from "next/app";
@@ -12,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <PageHead />
       {/* This is required for fonts to work in Portal too  */}
       <style global jsx>{`
         :root {

@@ -68,7 +68,7 @@ export default function Home() {
         </motion.div>
         <motion.div
           {...fadeInMotion()}
-          className="bg-primary-default col-span-1 row-span-1 rounded-md"
+          className="col-span-1 row-span-1 rounded-md bg-primary-default"
         >
           <div className="flex h-full w-full flex-col items-center justify-center gap-2">
             <Image
