@@ -40,7 +40,7 @@ export default function Home() {
   });
 
   return (
-    <main className="h-screen-safe-no-footer mx-auto flex max-w-screen-xl flex-col items-center gap-10 px-24 py-10">
+    <main className="h-screen-safe-no-footer mx-auto flex max-w-screen-xl flex-col items-center gap-10 px-2 py-10 md:px-10 lg:px-24">
       <SegmentedControl
         options={OPTIONS}
         style="connected"
