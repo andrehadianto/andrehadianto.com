@@ -43,6 +43,11 @@ const config: Config = {
           "on-error": "#E31E1E",
           "on-warning": "#FB9F05",
         },
+        darkText: {
+          "em-high": "#070708",
+          "em-mid": "#505162",
+          "em-low": "#73748C",
+        },
         element: {
           primary: "#2B71E9",
           secondary: "#2FBB4F",
@@ -56,7 +61,7 @@ const config: Config = {
         success: "#29C244",
         error: "#E31E1E",
         warning: "#FB9F05",
-        nice1: "#7289da",
+        nice1: "#A374FF",
       },
     },
   },
