@@ -13,7 +13,7 @@ export const PrintPage = () => {
     imageSize: string;
     blackBorderSize: string;
     whiteBorderSize: string;
-    files: string[];
+    files: string[] | string;
   };
 
   if (!files || !imageSize || !blackBorderSize || !whiteBorderSize) {
@@ -33,7 +33,10 @@ export const PrintPage = () => {
 
   const imageCount = columns * rows;
 
-  const countPerImage = imageCount / files.length;
+  let countPerImage = imageCount;
+  if (Array.isArray(files)) {
+    countPerImage = imageCount / files.length;
+  }
 
   const renderImage = (file: string) => (
     <div className="h-fit w-fit border border-black">
@@ -66,12 +69,15 @@ export const PrintPage = () => {
             gridAutoRows: `${childSize}mm`,
           }}
         >
-          {files.length > 0 &&
-            files.map((file) =>
-              Array.from({ length: countPerImage }).map((_, index) =>
-                renderImage(file),
-              ),
-            )}
+          {Array.isArray(files)
+            ? files.map((file) =>
+                Array.from({ length: countPerImage }).map((_, index) =>
+                  renderImage(file),
+                ),
+              )
+            : Array.from({ length: countPerImage }).map((_, index) =>
+                renderImage(files),
+              )}
           {extraImage.length > 0 && extraImage.map((file) => renderImage(file))}
         </div>
       </section>
@@ -79,7 +85,13 @@ export const PrintPage = () => {
         <div className="flex gap-2">
           <Button
             fullWidth
-            onClick={() => setExtraImage([...extraImage, files[0]])}
+            onClick={() => {
+              if (Array.isArray(files)) {
+                setExtraImage([...extraImage, files[0]]);
+              } else {
+                setExtraImage([...extraImage, files]);
+              }
+            }}
           >
             Add Extra Image
           </Button>
