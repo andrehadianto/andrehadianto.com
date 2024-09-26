@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { type FilePondFile } from "filepond";
-import Image from "next/image";
 import { PropsWithChildren, useState } from "react";
 import { FilePond } from "react-filepond";
 
@@ -13,9 +13,9 @@ import "filepond/dist/filepond.min.css";
 export const StickerMap = () => {
   const [files, setFiles] = useState<Blob[]>([]);
 
-  const [imageSize, setImageSize] = useState(300);
-  const [blackBorderSize, setBlackBorderSize] = useState(4);
-  const [whiteBorderSize, setWhiteBorderSize] = useState(8);
+  const [imageSize, setImageSize] = useState(46);
+  const [blackBorderSize, setBlackBorderSize] = useState(1);
+  const [whiteBorderSize, setWhiteBorderSize] = useState(2);
 
   const handleFilePondChange = (items: FilePondFile[]) => {
     setFiles(items.map((item) => item.file));
@@ -23,7 +23,7 @@ export const StickerMap = () => {
 
   return (
     <main className="mx-auto flex max-w-screen-xl flex-col items-center gap-10 px-2 pb-24 pt-10 sm:pb-40">
-      <div className="mx-auto flex flex-col md:flex-row gap-10 border-b border-b-border-base pb-10">
+      <div className="mx-auto flex flex-col gap-10 border-b border-b-border-base pb-10 md:flex-row">
         <FilePond
           acceptedFileTypes={["img/png", "img/jpg", "img/jpeg"]}
           allowMultiple={true}
@@ -33,63 +33,71 @@ export const StickerMap = () => {
         />
         <div className="flex h-fit flex-col gap-2 rounded-md border border-border-base p-4">
           <Input
+            contentProps={{
+              className: "max-w-[220px]",
+            }}
             id="image-size"
             label="Image Size"
-            placeholder="in px"
-            rightContent={<span className="text-text-em-mid">px</span>}
+            placeholder="in mm"
+            rightContent={<span className="text-text-em-mid">mm</span>}
             type="number"
             value={imageSize}
             wrapperProps={{ orientation: "horizontal" }}
             onChange={(e) => setImageSize(e.target.valueAsNumber)}
           />
           <Input
+            contentProps={{
+              className: "max-w-[220px]",
+            }}
             id="black-border-size"
             label="Black Border Size"
-            placeholder="in px"
-            rightContent={<span className="text-text-em-mid">px</span>}
+            placeholder="in mm"
+            rightContent={<span className="text-text-em-mid">x2 mm</span>}
             type="number"
             value={blackBorderSize}
             wrapperProps={{ orientation: "horizontal" }}
             onChange={(e) => setBlackBorderSize(e.target.valueAsNumber)}
           />
           <Input
+            contentProps={{
+              className: "max-w-[220px]",
+            }}
             id="white-border-size"
             label="White Border Size"
-            placeholder="in px"
-            rightContent={<span className="text-text-em-mid">px</span>}
+            placeholder="in mm"
+            rightContent={<span className="text-text-em-mid">x2 mm</span>}
             type="number"
             value={whiteBorderSize}
             wrapperProps={{ orientation: "horizontal" }}
             onChange={(e) => setWhiteBorderSize(e.target.valueAsNumber)}
           />
           <div className="flex items-end justify-between pl-1 pt-2">
-            <span className="font-mono font-medium text-text-em-high">{`TOTAL ${imageSize + blackBorderSize + whiteBorderSize}px (${(imageSize + blackBorderSize + whiteBorderSize) / 300}inch)`}</span>
-            <span className="font-mono text-xs text-text-em-mid">300dpi</span>
+            <span className="font-mono font-medium text-text-em-high">{`LENGTH ${imageSize + blackBorderSize * 2 + whiteBorderSize * 2}mm (${Math.round(((imageSize + blackBorderSize * 2 + whiteBorderSize * 2) / 25.4) * 100) / 100}inch)`}</span>
+            <span className="font-mono text-xs text-text-em-mid">
+              25.4mm/inch
+            </span>
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap items-center gap-10 rounded-md bg-white/10 p-10">
+      <div className="flex flex-wrap items-center justify-center gap-10 rounded-md bg-white/10 p-10">
         {files.length > 0 ? (
-          files.map((file, index) => {
-            return (
-              <div
-                key={index}
-                className={cn("h-full border-black outline outline-white", {})}
+          files.map((file, index) => (
+            <div key={index}>
+              <img
+                alt={`sticker-${index}`}
+                className={cn(
+                  "border-black object-cover outline outline-white",
+                )}
+                src={URL.createObjectURL(file)}
                 style={{
-                  borderWidth: blackBorderSize,
-                  outlineWidth: whiteBorderSize,
+                  borderWidth: `${blackBorderSize}mm`,
+                  outlineWidth: `${whiteBorderSize}mm`,
+                  height: `${imageSize}mm`,
+                  width: `${imageSize}mm`,
                 }}
-              >
-                <Image
-                  alt={`sticker-${index}`}
-                  className={cn("object-cover", {})}
-                  height={imageSize}
-                  src={URL.createObjectURL(file)}
-                  width={imageSize}
-                />
-              </div>
-            );
-          })
+              />
+            </div>
+          ))
         ) : (
           <div className="flex flex-col items-center gap-2 text-text-em-mid">
             <Icon
