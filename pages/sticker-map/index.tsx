@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { type FilePondFile } from "filepond";
+import { useRouter } from "next/router";
 import { PropsWithChildren, useState } from "react";
 import { FilePond } from "react-filepond";
 
+import { Button } from "@/common/components/Button";
 import { Icon } from "@/common/components/CustomIcon";
 import { Footer } from "@/common/components/Footer";
 import { Input } from "@/common/components/Input";
@@ -11,14 +13,27 @@ import { cn } from "@/common/functions";
 import "filepond/dist/filepond.min.css";
 
 export const StickerMap = () => {
+  const router = useRouter();
   const [files, setFiles] = useState<Blob[]>([]);
 
-  const [imageSize, setImageSize] = useState(46);
+  const [imageSize, setImageSize] = useState(51);
   const [blackBorderSize, setBlackBorderSize] = useState(1);
   const [whiteBorderSize, setWhiteBorderSize] = useState(2);
 
   const handleFilePondChange = (items: FilePondFile[]) => {
     setFiles(items.map((item) => item.file));
+  };
+
+  const handleNavigateToPrint = () => {
+    router.push({
+      pathname: "/sticker-map/print",
+      query: {
+        imageSize,
+        blackBorderSize,
+        whiteBorderSize,
+        files: files.map((file) => URL.createObjectURL(file)),
+      },
+    });
   };
 
   return (
@@ -38,6 +53,7 @@ export const StickerMap = () => {
             }}
             id="image-size"
             label="Image Size"
+            min={0}
             placeholder="in mm"
             rightContent={<span className="text-text-em-mid">mm</span>}
             type="number"
@@ -51,6 +67,7 @@ export const StickerMap = () => {
             }}
             id="black-border-size"
             label="Black Border Size"
+            min={0}
             placeholder="in mm"
             rightContent={<span className="text-text-em-mid">x2 mm</span>}
             type="number"
@@ -64,6 +81,7 @@ export const StickerMap = () => {
             }}
             id="white-border-size"
             label="White Border Size"
+            min={0}
             placeholder="in mm"
             rightContent={<span className="text-text-em-mid">x2 mm</span>}
             type="number"
@@ -72,7 +90,7 @@ export const StickerMap = () => {
             onChange={(e) => setWhiteBorderSize(e.target.valueAsNumber)}
           />
           <div className="flex items-end justify-between pl-1 pt-2">
-            <span className="font-mono font-medium text-text-em-high">{`LENGTH ${imageSize + blackBorderSize * 2 + whiteBorderSize * 2}mm (${Math.round(((imageSize + blackBorderSize * 2 + whiteBorderSize * 2) / 25.4) * 100) / 100}inch)`}</span>
+            <span className="font-mono font-medium text-text-em-high">{`LENGTH ${imageSize}mm (${Math.round((imageSize / 25.4) * 100) / 100}inch)`}</span>
             <span className="font-mono text-xs text-text-em-mid">
               25.4mm/inch
             </span>
@@ -82,19 +100,21 @@ export const StickerMap = () => {
       <div className="flex flex-wrap items-center justify-center gap-10 rounded-md bg-white/10 p-10">
         {files.length > 0 ? (
           files.map((file, index) => (
-            <div key={index}>
+            <div
+              key={index}
+              className="border-white"
+              style={{
+                boxSizing: "border-box",
+                height: `${imageSize}mm`,
+                width: `${imageSize}mm`,
+                borderWidth: `${whiteBorderSize}mm`,
+              }}
+            >
               <img
                 alt={`sticker-${index}`}
-                className={cn(
-                  "border-black object-cover outline outline-white",
-                )}
+                className={cn("box-border border-black object-cover")}
                 src={URL.createObjectURL(file)}
-                style={{
-                  borderWidth: `${blackBorderSize}mm`,
-                  outlineWidth: `${whiteBorderSize}mm`,
-                  height: `${imageSize}mm`,
-                  width: `${imageSize}mm`,
-                }}
+                style={{ borderWidth: `${blackBorderSize}mm` }}
               />
             </div>
           ))
@@ -109,6 +129,10 @@ export const StickerMap = () => {
             <span>There is no image yet!</span>
           </div>
         )}
+      </div>
+      <div className="flex-grow" />
+      <div>
+        <Button onClick={handleNavigateToPrint}>Go to print page</Button>
       </div>
     </main>
   );
