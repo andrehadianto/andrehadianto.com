@@ -23,7 +23,7 @@ export const StickerMap = () => {
 
   return (
     <main className="mx-auto flex max-w-screen-xl flex-col items-center gap-10 px-2 pb-24 pt-10 sm:pb-40">
-      <div className="mx-auto flex gap-10 border-b border-b-border-base pb-10">
+      <div className="mx-auto flex flex-col md:flex-row gap-10 border-b border-b-border-base pb-10">
         <FilePond
           acceptedFileTypes={["img/png", "img/jpg", "img/jpeg"]}
           allowMultiple={true}
