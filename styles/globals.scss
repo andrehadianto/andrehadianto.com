@@ -77,3 +77,9 @@ iconify-icon {
   width: 1em;
   height: 1em;
 }
+
+@media print {
+  @page {
+    size: 210mm 297mm;
+  }
+}
