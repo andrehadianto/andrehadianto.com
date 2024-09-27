@@ -15,6 +15,7 @@ import "filepond/dist/filepond.min.css";
 export const StickerMap = () => {
   const router = useRouter();
   const [files, setFiles] = useState<Blob[]>([]);
+  const [tinyFiles, setTinyFiles] = useState<Blob[]>([]);
 
   const [imageSize, setImageSize] = useState(51);
   const [blackBorderSize, setBlackBorderSize] = useState(1);
@@ -22,6 +23,10 @@ export const StickerMap = () => {
 
   const handleFilePondChange = (items: FilePondFile[]) => {
     setFiles(items.map((item) => item.file));
+  };
+
+  const handleTinyFilePondChange = (items: FilePondFile[]) => {
+    setTinyFiles(items.map((item) => item.file));
   };
 
   const handleNavigateToPrint = () => {
@@ -32,6 +37,9 @@ export const StickerMap = () => {
         blackBorderSize,
         whiteBorderSize,
         files: JSON.stringify(files.map((file) => URL.createObjectURL(file))),
+        tinyFiles: JSON.stringify(
+          tinyFiles.map((file) => URL.createObjectURL(file)),
+        ),
       },
     });
   };
@@ -44,7 +52,18 @@ export const StickerMap = () => {
           allowMultiple={true}
           className="w-[400px]"
           files={files}
+          labelIdle="Drag & Drop your main image files"
+          name="main-image"
           onupdatefiles={handleFilePondChange}
+        />
+        <FilePond
+          acceptedFileTypes={["img/png", "img/jpg", "img/jpeg"]}
+          allowMultiple={true}
+          className="w-[400px]"
+          files={tinyFiles}
+          labelIdle="Drag & Drop your tiny image files"
+          name="tiny-image"
+          onupdatefiles={handleTinyFilePondChange}
         />
         <div className="flex h-fit flex-col gap-2 rounded-md border border-border-base p-4">
           <Input
