@@ -31,7 +31,7 @@ export const StickerMap = () => {
         imageSize,
         blackBorderSize,
         whiteBorderSize,
-        files: files.map((file) => URL.createObjectURL(file)),
+        files: JSON.stringify(files.map((file) => URL.createObjectURL(file))),
       },
     });
   };
