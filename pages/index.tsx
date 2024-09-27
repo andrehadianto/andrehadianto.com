@@ -132,7 +132,7 @@ export default function Home() {
                 unoptimized
                 alt="sticker-tools"
                 className="rounded-md object-cover"
-                src="http://localhost:3000/andrehadianto.com/assets/sticker-map-tools.png"
+                src="https://andrehadianto.github.io/andrehadianto.com/assets/sticker-map-tools.png"
               />
             </div>
             <div className="">
