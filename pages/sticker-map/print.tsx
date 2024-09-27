@@ -16,7 +16,7 @@ export const PrintPage = () => {
     files: string;
   };
 
-  const parsedFiles: string[] = JSON.parse(files);
+  const parsedFiles: string[] = JSON.parse(files ?? "[]");
 
   if (!files || !imageSize || !blackBorderSize || !whiteBorderSize) {
     return (
