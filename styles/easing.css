@@ -1,0 +1,61 @@
+@layer utilities {
+  .ease-in-back {
+    transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  .ease-out-back {
+    transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  .ease-in-out-back {
+    transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  .ease-in-bounce {
+    transition-timing-function: cubic-bezier(0.64, 0, 0.78, 0);
+  }
+
+  .ease-out-bounce {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .ease-in-out-bounce {
+    transition-timing-function: cubic-bezier(0.64, 0, 0.36, 1);
+  }
+
+  .ease-in-elastic {
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  .ease-out-elastic {
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .ease-in-out-elastic {
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .ease-anticipate {
+    transition-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  .ease-overshoot {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .ease-smooth {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ease-emphasized {
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .ease-emphasized-decelerate {
+    transition-timing-function: cubic-bezier(0.05, 0.7, 0.1, 1);
+  }
+
+  .ease-emphasized-accelerate {
+    transition-timing-function: cubic-bezier(0.3, 0, 0.8, 0.15);
+  }
+}

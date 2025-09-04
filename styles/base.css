@@ -1,31 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0;
-}
-
 @layer base {
   html {
-    color-scheme: dark;
     font-size: 16px;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-
-    @apply bg-bg-base;
+    background-color: var(--color-bg-base);
   }
 
   *,
@@ -65,13 +51,18 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-// text area resizer
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
 ::-webkit-resizer {
   display: none;
 }
 
-// prevent layout shit in iconify-icon
-// https://iconify.design/docs/iconify-icon/#layout-shift
 iconify-icon {
   display: inline-block;
   width: 1em;

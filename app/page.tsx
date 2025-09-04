@@ -24,7 +24,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="sm:h-screen-safe-no-footer mx-auto flex max-w-screen-xl flex-col items-center gap-10 px-2 pb-24 pt-10 sm:pb-10 md:px-10 lg:px-24">
+    <main className="sm:h-screen-safe-no-footer mx-auto flex max-w-(--breakpoint-xl) flex-col items-center gap-10 px-2 pb-24 pt-10 sm:pb-10 md:px-10 lg:px-24">
       <SegmentedControl
         options={OPTIONS}
         style="connected"

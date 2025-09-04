@@ -1,0 +1,87 @@
+/* FONTS */
+@theme {
+  --font-sans: var(--font-inter);
+}
+
+/* COLORS */
+@theme {
+  --color-primary: #2b71e9;
+  --color-primary-default: #2b71e9;
+
+  --color-bg-base: #010409;
+
+  --color-border-base: #30363d;
+
+  --color-surface-base: #0d1117;
+  --color-surface-elevated: #161b22;
+
+  --color-text-em-high: #f7f7f8;
+  --color-text-em-mid: #a2a2b4;
+  --color-text-em-low: #777890;
+  --color-text-em-placeholder: #464655;
+  --color-text-on-primary: #f7f7f8;
+  --color-text-on-success: #29c244;
+  --color-text-on-error: #e31e1e;
+  --color-text-on-warning: #fb9f05;
+
+  --color-dark-text-em-high: #070708;
+  --color-dark-text-em-mid: #505162;
+  --color-dark-text-em-low: #73748c;
+
+  --color-element-primary: #2b71e9;
+  --color-element-secondary: #2fbb4f;
+  --color-element-tertiary: #292e36;
+  --color-element-disabled: #1e2226;
+  --color-element-success: #054511;
+  --color-element-error: #660707;
+  --color-element-warning: #573b0a;
+
+  --color-link: #2563eb;
+  --color-success: #29c244;
+  --color-error: #e31e1e;
+  --color-warning: #fb9f05;
+  --color-nice1: #a374ff;
+}
+
+/* BACKGROUND IMAGES */
+@theme {
+  --bg-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --bg-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
+
+/* CUSTOM EASING FUNCTIONS */
+@theme {
+  --ease-in-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-in-bounce: cubic-bezier(0.64, 0, 0.78, 0);
+  --ease-out-bounce: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-bounce: cubic-bezier(0.64, 0, 0.36, 1);
+  --ease-in-elastic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-out-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-out-elastic: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-anticipate: cubic-bezier(0.8, 0, 1, 1);
+  --ease-overshoot: cubic-bezier(0, 0, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+}
+
+/* CUSTOM FONT SIZES */
+@theme {
+  --text-4\.5xl: 2.5rem;
+  --text-4\.5xl--line-height: 2.8125rem;
+  --text-5\.5xl: 3.25rem;
+  --text-5\.5xl--line-height: 3.625rem;
+  --text-6\.5xl: 4rem;
+  --text-6\.5xl--line-height: 4rem;
+}
+
+/* SPACING */
+@theme {
+  --spacing-fill-available: -webkit-fill-available;
+}

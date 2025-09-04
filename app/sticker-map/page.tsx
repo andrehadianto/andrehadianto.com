@@ -45,7 +45,7 @@ export const StickerMap = () => {
   };
 
   return (
-    <main className="mx-auto flex max-w-screen-xl flex-col items-center gap-10 px-2 pb-24 pt-10 sm:pb-40">
+    <main className="mx-auto flex max-w-(--breakpoint-xl) flex-col items-center gap-10 px-2 pb-24 pt-10 sm:pb-40">
       <div className="mx-auto flex flex-col gap-10 border-b border-b-border-base pb-10 md:flex-row">
         <FilePond
           acceptedFileTypes={["img/png", "img/jpg", "img/jpeg"]}
@@ -149,7 +149,7 @@ export const StickerMap = () => {
           </div>
         )}
       </div>
-      <div className="flex-grow" />
+      <div className="grow" />
       <div>
         <Button onClick={handleNavigateToPrint}>Go to print page</Button>
       </div>

@@ -2,7 +2,7 @@ import { CoreLayout } from "@/common/components/CoreLayout";
 import { inter } from "@/common/fonts";
 import { cn } from "@/common/functions";
 
-import "@/styles/globals.scss";
+import "@/styles/main.css";
 
 export default function RootLayout({
   children,
