@@ -1,5 +1,6 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import { PropsWithChildren, useState } from "react";
 
 import { Button } from "@/common/components/Button";
@@ -9,22 +10,25 @@ export const PrintPage = () => {
   const [extraImage, setExtraImage] = useState<string[]>([]);
   const [tinyImage, setTinyImage] = useState<string[]>([]);
 
-  const { query } = useRouter();
-  const { imageSize, blackBorderSize, whiteBorderSize, files, tinyFiles } =
-    query as {
-      imageSize: string;
-      blackBorderSize: string;
-      whiteBorderSize: string;
-      files: string;
-      tinyFiles: string;
-    };
+  const searchParams = useSearchParams();
+  const imageSize = searchParams.get("imageSize") ?? "";
+  const blackBorderSize = searchParams.get("blackBorderSize") ?? "";
+  const whiteBorderSize = searchParams.get("whiteBorderSize") ?? "";
+  const filesParam = searchParams.get("files") ?? "";
+  const tinyFilesParam = searchParams.get("tinyFiles") ?? "";
 
-  const parsedFiles: string[] = JSON.parse(files ?? "[]");
-  const parsedTinyFiles: string[] = JSON.parse(tinyFiles ?? "[]");
+  let parsedFiles: string[] = [];
+  let parsedTinyFiles: string[] = [];
+  try {
+    parsedFiles = JSON.parse(filesParam || "[]");
+  } catch {}
+  try {
+    parsedTinyFiles = JSON.parse(tinyFilesParam || "[]");
+  } catch {}
 
-  if (!files || !imageSize || !blackBorderSize || !whiteBorderSize) {
+  if (!filesParam || !imageSize || !blackBorderSize || !whiteBorderSize) {
     return (
-      <span className="font-mono text-sm text-text-em-high">
+      <span className="text-text-em-high font-mono text-sm">
         missing something. go back!
       </span>
     );
@@ -39,7 +43,8 @@ export const PrintPage = () => {
 
   const imageCount = columns * rows;
 
-  const countPerImage = imageCount / parsedFiles.length;
+  const countPerImage =
+    parsedFiles.length > 0 ? Math.floor(imageCount / parsedFiles.length) : 0;
 
   const renderImage = (file: string) => (
     <div className="h-fit w-fit border border-black">
@@ -133,7 +138,7 @@ export const PrintPage = () => {
             Delete Last Tiny Image
           </Button>
         </div>
-        <span className="font-mono text-sm text-text-em-high">
+        <span className="text-text-em-high font-mono text-sm">
           The white space above is the A4 paper.
         </span>
       </div>

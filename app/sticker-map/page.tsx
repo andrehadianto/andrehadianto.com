@@ -1,6 +1,7 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
 import { type FilePondFile } from "filepond";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { PropsWithChildren, useState } from "react";
 import { FilePond } from "react-filepond";
 
@@ -30,23 +31,21 @@ export const StickerMap = () => {
   };
 
   const handleNavigateToPrint = () => {
-    router.push({
-      pathname: "/sticker-map/print",
-      query: {
-        imageSize,
-        blackBorderSize,
-        whiteBorderSize,
-        files: JSON.stringify(files.map((file) => URL.createObjectURL(file))),
-        tinyFiles: JSON.stringify(
-          tinyFiles.map((file) => URL.createObjectURL(file)),
-        ),
-      },
+    const params = new URLSearchParams({
+      imageSize: String(imageSize),
+      blackBorderSize: String(blackBorderSize),
+      whiteBorderSize: String(whiteBorderSize),
+      files: JSON.stringify(files.map((file) => URL.createObjectURL(file))),
+      tinyFiles: JSON.stringify(
+        tinyFiles.map((file) => URL.createObjectURL(file)),
+      ),
     });
+    router.push(`/sticker-map/print?${params.toString()}`);
   };
 
   return (
-    <main className="mx-auto flex max-w-(--breakpoint-xl) flex-col items-center gap-10 px-2 pb-24 pt-10 sm:pb-40">
-      <div className="mx-auto flex flex-col gap-10 border-b border-b-border-base pb-10 md:flex-row">
+    <main className="mx-auto flex max-w-(--breakpoint-xl) flex-col items-center gap-10 px-2 pt-10 pb-24 sm:pb-40">
+      <div className="border-b-border-base mx-auto flex flex-col gap-10 border-b pb-10 md:flex-row">
         <FilePond
           acceptedFileTypes={["img/png", "img/jpg", "img/jpeg"]}
           allowMultiple={true}
@@ -65,7 +64,7 @@ export const StickerMap = () => {
           name="tiny-image"
           onupdatefiles={handleTinyFilePondChange}
         />
-        <div className="flex h-fit flex-col gap-2 rounded-md border border-border-base p-4">
+        <div className="border-border-base flex h-fit flex-col gap-2 rounded-md border p-4">
           <Input
             contentProps={{
               className: "max-w-[220px]",
@@ -108,9 +107,9 @@ export const StickerMap = () => {
             wrapperProps={{ orientation: "horizontal" }}
             onChange={(e) => setWhiteBorderSize(e.target.valueAsNumber)}
           />
-          <div className="flex items-end justify-between pl-1 pt-2">
-            <span className="font-mono font-medium text-text-em-high">{`LENGTH ${imageSize}mm (${Math.round((imageSize / 25.4) * 100) / 100}inch)`}</span>
-            <span className="font-mono text-xs text-text-em-mid">
+          <div className="flex items-end justify-between pt-2 pl-1">
+            <span className="text-text-em-high font-mono font-medium">{`LENGTH ${imageSize}mm (${Math.round((imageSize / 25.4) * 100) / 100}inch)`}</span>
+            <span className="text-text-em-mid font-mono text-xs">
               25.4mm/inch
             </span>
           </div>
@@ -138,7 +137,7 @@ export const StickerMap = () => {
             </div>
           ))
         ) : (
-          <div className="flex flex-col items-center gap-2 text-text-em-mid">
+          <div className="text-text-em-mid flex flex-col items-center gap-2">
             <Icon
               className="h-8 w-8"
               height={32}
