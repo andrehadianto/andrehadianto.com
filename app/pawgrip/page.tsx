@@ -14,83 +14,41 @@ type Product = {
   imgSrc: string;
 };
 
-const MOCK_PRODUCTS: Product[] = [
+const PRODUCTS: Product[] = [
   {
     id: "p1",
     name: "Paw Grip v2 - Black",
     description: "Matte texture, firm hold for daily use.",
-    price: 12.0,
+    price: 25.0,
     imgSrc: "https://placehold.in/600x400?text=Black",
   },
   {
     id: "p2",
     name: "Paw Grip v2 - White",
     description: "Clean look, reliable grip finish.",
-    price: 12.0,
+    price: 25.0,
     imgSrc: "https://placehold.in/600x400?text=White",
   },
   {
     id: "p3",
-    name: "Paw Grip v2 - Pink",
+    name: "Paw Grip v2 - Orange",
     description: "Soft hue with the same trusted feel.",
-    price: 12.0,
+    price: 25.0,
     imgSrc: "https://placehold.in/600x400?text=Pink",
   },
   {
     id: "p4",
-    name: "Paw Grip v2 - Blue",
+    name: "Paw Grip v3 - Black",
     description: "Cool tone, steady performance.",
-    price: 12.0,
+    price: 30.0,
     imgSrc: "https://placehold.in/600x400?text=Blue",
   },
   {
     id: "p5",
-    name: "Paw Grip v2 - Green",
+    name: "Paw Grip v3 - White",
     description: "Fresh style, consistent traction.",
-    price: 12.0,
+    price: 30.0,
     imgSrc: "https://placehold.in/600x400?text=Green",
-  },
-  {
-    id: "p6",
-    name: "Paw Grip v2 - Orange",
-    description: "Vibrant pop with dependable grip.",
-    price: 12.0,
-    imgSrc: "https://placehold.in/600x400?text=Orange",
-  },
-  {
-    id: "p7",
-    name: "Paw Grip v2 - White",
-    description: "Clean look, reliable grip finish.",
-    price: 12.0,
-    imgSrc: "https://placehold.in/600x400?text=White",
-  },
-  {
-    id: "p8",
-    name: "Paw Grip v2 - Pink",
-    description: "Soft hue with the same trusted feel.",
-    price: 12.0,
-    imgSrc: "https://placehold.in/600x400?text=Pink",
-  },
-  {
-    id: "p9",
-    name: "Paw Grip v2 - Blue",
-    description: "Cool tone, steady performance.",
-    price: 12.0,
-    imgSrc: "https://placehold.in/600x400?text=Blue",
-  },
-  {
-    id: "p10",
-    name: "Paw Grip v2 - Green",
-    description: "Fresh style, consistent traction.",
-    price: 12.0,
-    imgSrc: "https://placehold.in/600x400?text=Green",
-  },
-  {
-    id: "p11",
-    name: "Paw Grip v2 - Orange",
-    description: "Vibrant pop with dependable grip.",
-    price: 12.0,
-    imgSrc: "https://placehold.in/600x400?text=Orange",
   },
 ];
 
@@ -110,7 +68,7 @@ export default function PawgripPage() {
 
   const cartItems = useMemo(
     () =>
-      MOCK_PRODUCTS.filter((p) => (quantities[p.id] ?? 0) > 0).map((p) => ({
+      PRODUCTS.filter((p) => (quantities[p.id] ?? 0) > 0).map((p) => ({
         product: p,
         quantity: quantities[p.id] ?? 0,
         total: (quantities[p.id] ?? 0) * p.price,
@@ -121,6 +79,17 @@ export default function PawgripPage() {
   const subtotal = useMemo(
     () => cartItems.reduce((acc, item) => acc + item.total, 0),
     [cartItems],
+  );
+
+  const totalItems = useMemo(
+    () => Object.values(quantities).reduce((acc, qty) => acc + (qty ?? 0), 0),
+    [quantities],
+  );
+  const discountCount = useMemo(() => Math.floor(totalItems / 2), [totalItems]);
+  const discount = useMemo(() => discountCount * 5, [discountCount]);
+  const total = useMemo(
+    () => Math.max(0, subtotal - discount),
+    [subtotal, discount],
   );
 
   return (
@@ -137,7 +106,7 @@ export default function PawgripPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {MOCK_PRODUCTS.map((product) => (
+            {PRODUCTS.map((product) => (
               <ProductCard
                 key={product.id}
                 description={product.description}
@@ -164,7 +133,7 @@ export default function PawgripPage() {
                   {cartItems.map(({ product, quantity, total }) => (
                     <div
                       key={product.id}
-                      className="border-border-base rounded-md border px-3 py-1 text-xs"
+                      className="border-border-base h-fit rounded-md border px-3 py-1 text-xs"
                     >
                       <span className="text-text-em-high">
                         {product.name} × {quantity}
@@ -174,16 +143,44 @@ export default function PawgripPage() {
                       </span>
                     </div>
                   ))}
+                  {discountCount > 0 &&
+                    Array.from({ length: discountCount }).map((_, index) => (
+                      <div
+                        key={`discount-${index}`}
+                        className="border-border-base h-fit rounded-md border px-3 py-1 text-xs"
+                      >
+                        <span className="text-text-em-high">Pair discount</span>
+                        <span className="text-text-em-high ml-2 font-medium">
+                          -$5.00
+                        </span>
+                      </div>
+                    ))}
                 </div>
               )}
             </div>
 
-            <div className="flex shrink-0 items-center gap-4">
-              <div className="text-sm">
-                <span className="text-text-em-med">Subtotal</span>
-                <span className="text-text-em-high ml-2 font-semibold">
-                  ${subtotal.toFixed(2)}
-                </span>
+            <div className="flex shrink-0 items-center gap-4 self-end">
+              <div className="text-right text-sm">
+                <div>
+                  <span className="text-text-em-med">Subtotal</span>
+                  <span className="text-text-em-high ml-2">
+                    ${subtotal.toFixed(2)}
+                  </span>
+                </div>
+                {discount > 0 && (
+                  <div>
+                    <span className="text-text-em-med">Discount</span>
+                    <span className="text-text-em-high ml-2">
+                      -{`$${discount.toFixed(2)}`}
+                    </span>
+                  </div>
+                )}
+                <div className="font-semibold">
+                  <span className="text-text-em-med">Total</span>
+                  <span className="text-text-em-high ml-2">
+                    ${total.toFixed(2)}
+                  </span>
+                </div>
               </div>
               <Button
                 className="min-w-[120px]"

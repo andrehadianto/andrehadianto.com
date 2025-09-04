@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { Icon } from "@iconify-icon/react";
+
 import { Button } from "@/common/components/Button";
 
 export interface ProductCardProps {
@@ -47,24 +49,26 @@ export const ProductCard = ({
         )}
 
         {/* Quantity controls */}
-        <div className="absolute right-2 bottom-2 flex items-center gap-2">
+        <div className="bg-surface-base/90 absolute right-2 bottom-2 flex items-center gap-2 rounded-lg px-2 py-1">
           <Button
             aria-label="decrease quantity"
             disabled={!onDecrease}
+            iconLeft={<Icon icon="mdi:minus" />}
+            size="sm"
+            variant="tertiary"
             onClick={onDecrease}
-          >
-            -
-          </Button>
+          />
           <span className="text-text-em-high text-sm font-medium">
             {quantity}
           </span>
           <Button
             aria-label="increase quantity"
             disabled={!onIncrease}
+            iconRight={<Icon icon="mdi:plus" />}
+            size="sm"
+            variant="tertiary"
             onClick={onIncrease}
-          >
-            +
-          </Button>
+          />
         </div>
       </div>
     </div>
