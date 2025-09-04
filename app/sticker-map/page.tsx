@@ -13,7 +13,7 @@ import { cn } from "@/common/functions";
 
 import "filepond/dist/filepond.min.css";
 
-export const StickerMap = () => {
+export default function StickerMap() {
   const router = useRouter();
   const [files, setFiles] = useState<Blob[]>([]);
   const [tinyFiles, setTinyFiles] = useState<Blob[]>([]);
@@ -154,7 +154,7 @@ export const StickerMap = () => {
       </div>
     </main>
   );
-};
+}
 
 StickerMap.layout = ({ children }: PropsWithChildren) => (
   <div className="relative">
@@ -162,5 +162,3 @@ StickerMap.layout = ({ children }: PropsWithChildren) => (
     <Footer />
   </div>
 );
-
-export default StickerMap;

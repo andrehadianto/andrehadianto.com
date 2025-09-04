@@ -6,7 +6,7 @@ import { PropsWithChildren, useState } from "react";
 import { Button } from "@/common/components/Button";
 import { cn } from "@/common/functions";
 
-export const PrintPage = () => {
+export default function PrintPage() {
   const [extraImage, setExtraImage] = useState<string[]>([]);
   const [tinyImage, setTinyImage] = useState<string[]>([]);
 
@@ -144,10 +144,8 @@ export const PrintPage = () => {
       </div>
     </main>
   );
-};
+}
 
 PrintPage.layout = ({ children }: PropsWithChildren) => (
   <div className="relative">{children}</div>
 );
-
-export default PrintPage;

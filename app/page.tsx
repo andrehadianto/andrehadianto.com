@@ -1,4 +1,5 @@
 "use client";
+// eslint-disable-next-line import/named
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -24,7 +25,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="sm:h-screen-safe-no-footer mx-auto flex max-w-(--breakpoint-xl) flex-col items-center gap-10 px-2 pb-24 pt-10 sm:pb-10 md:px-10 lg:px-24">
+    <main className="sm:h-screen-safe-no-footer mx-auto flex max-w-(--breakpoint-xl) flex-col items-center gap-10 px-2 pt-10 pb-24 sm:pb-10 md:px-10 lg:px-24">
       <SegmentedControl
         options={OPTIONS}
         style="connected"
@@ -42,7 +43,7 @@ export default function Home() {
               <div className="flex flex-col gap-2">
                 <Text
                   as="h2"
-                  className="text-balance text-lg font-bold text-darkText-em-high sm:text-2xl"
+                  className="text-darkText-em-high text-lg font-bold text-balance sm:text-2xl"
                 >
                   Projects
                 </Text>
@@ -50,12 +51,12 @@ export default function Home() {
             </motion.div>
             <motion.div
               {...flyInMotion("up", 100, 0.4)}
-              className="col-span-2 row-span-1 min-h-40 rounded-md bg-primary-default p-2 sm:col-span-2"
+              className="bg-primary-default col-span-2 row-span-1 min-h-40 rounded-md p-2 sm:col-span-2"
             >
               <div className="flex flex-col gap-2">
                 <Text
                   as="h2"
-                  className="text-balance text-lg font-bold sm:text-2xl"
+                  className="text-lg font-bold text-balance sm:text-2xl"
                 >
                   My Tech Stacks
                 </Text>
@@ -63,13 +64,13 @@ export default function Home() {
             </motion.div>
             <motion.div
               {...fadeInMotion()}
-              className="col-span-2 row-span-1 min-h-40 rounded-md bg-surface-base p-2 sm:col-span-1"
+              className="bg-surface-base col-span-2 row-span-1 min-h-40 rounded-md p-2 sm:col-span-1"
             >
               <div className="flex h-full w-full flex-col items-center justify-center gap-4">
                 <Image
                   unoptimized
                   alt="pfp"
-                  className="md:h-18 md:w-18 h-10 w-10 rounded-full"
+                  className="h-10 w-10 rounded-full md:h-18 md:w-18"
                   height={72}
                   src="https://andrehadianto.github.io/andrehadianto.com/assets/pfp.png"
                   width={72}
@@ -77,14 +78,14 @@ export default function Home() {
                 <div className="space-y-1">
                   <Text
                     as="h3"
-                    className="text-balance text-center text-lg font-bold"
+                    className="text-center text-lg font-bold text-balance"
                   >
                     {`Hello, I'm `}
                     <span className="text-element-primary">Andre</span>
                   </Text>
                   <Text
                     as="h3"
-                    className="text-balance text-center text-lg font-bold"
+                    className="text-center text-lg font-bold text-balance"
                   >
                     {`Based in Singapore 🇸🇬`}
                   </Text>
@@ -98,7 +99,7 @@ export default function Home() {
               <div className="flex flex-col gap-2">
                 <Text
                   as="h2"
-                  className="text-balance text-lg font-bold text-darkText-em-high sm:text-2xl"
+                  className="text-darkText-em-high text-lg font-bold text-balance sm:text-2xl"
                 >
                   About Me / Blog?
                 </Text>
@@ -106,12 +107,12 @@ export default function Home() {
             </motion.div>
             <motion.div
               {...flyInMotion("down", 100, 0.8)}
-              className="col-span-2 row-span-1 min-h-40 rounded-md bg-nice1 p-2"
+              className="bg-nice1 col-span-2 row-span-1 min-h-40 rounded-md p-2"
             >
               <div className="flex flex-col gap-2">
                 <Text
                   as="h2"
-                  className="text-balance text-lg font-bold sm:text-2xl"
+                  className="text-lg font-bold text-balance sm:text-2xl"
                 >
                   Work Experiences
                 </Text>
@@ -137,7 +138,7 @@ export default function Home() {
               />
             </div>
             <div className="">
-              <Text className="font-bold text-darkText-em-high">
+              <Text className="text-darkText-em-high font-bold">
                 sticker-map
               </Text>
             </div>
