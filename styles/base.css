@@ -12,16 +12,13 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     background-color: var(--color-bg-base);
+    color: var(--color-text-em-high);
   }
 
   *,
   *:before,
   *:after {
     box-sizing: border-box;
-  }
-
-  :root {
-    --font-inter: "Inter", sans-serif;
   }
 
   html,

@@ -155,10 +155,3 @@ export default function StickerMap() {
     </main>
   );
 }
-
-StickerMap.layout = ({ children }: PropsWithChildren) => (
-  <div className="relative">
-    {children}
-    <Footer />
-  </div>
-);

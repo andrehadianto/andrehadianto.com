@@ -1,4 +1,3 @@
-import { CoreLayout } from "@/common/components/CoreLayout";
 import { inter } from "@/common/fonts";
 import { cn } from "@/common/functions";
 
@@ -11,9 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={cn(inter.className, inter.variable)} lang="en">
-      <body>
-        <CoreLayout>{children}</CoreLayout>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

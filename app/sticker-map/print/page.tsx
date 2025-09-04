@@ -13,7 +13,3 @@ export default function PrintPage() {
     </Suspense>
   );
 }
-
-PrintPage.layout = ({ children }: PropsWithChildren) => (
-  <div className="relative">{children}</div>
-);
