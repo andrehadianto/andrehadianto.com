@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+"use client";
+import { motion } from "motion/react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { SegmentedControl } from "@/common/components/SegmentedControl";

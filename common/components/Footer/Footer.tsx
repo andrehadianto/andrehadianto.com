@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+"use client";
+import { motion } from "motion/react";
 
 import { Button } from "@/common/components/Button";
 import { Icon } from "@/common/components/CustomIcon";
@@ -10,7 +11,7 @@ export const Footer = () => {
   return (
     <motion.footer
       {...flyInMotion("down")}
-      className="fixed bottom-0 z-header w-full border-t border-border-base bg-bg-base/60 backdrop-blur-sm px-2 py-2 after:pointer-events-none after:absolute after:inset-0 after:border-t-2 after:border-t-white/20"
+      className="fixed bottom-0 z-header w-full border-t border-border-base bg-bg-base/60 px-2 py-2 backdrop-blur-sm after:pointer-events-none after:absolute after:inset-0 after:border-t-2 after:border-t-white/20"
     >
       <div className="mx-1 flex h-full items-center justify-between sm:mx-2 md:mx-3 lg:mx-4">
         <div className="flex flex-1 justify-start">
