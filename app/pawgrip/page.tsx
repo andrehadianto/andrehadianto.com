@@ -86,7 +86,7 @@ export default function PawgripPage() {
     [quantities],
   );
   const discountCount = useMemo(() => Math.floor(totalItems / 2), [totalItems]);
-  const discount = useMemo(() => discountCount * 5, [discountCount]);
+  const discount = useMemo(() => discountCount * 10, [discountCount]);
   const total = useMemo(
     () => Math.max(0, subtotal - discount),
     [subtotal, discount],
@@ -101,7 +101,8 @@ export default function PawgripPage() {
               Pawgrip
             </Text>
             <p className="text-text-em-med mt-1 text-sm">
-              Minimal, clean checkout. Add quantities and review your order.
+              Point-of-sale web app for PawGrip. Add quantities and review your
+              order.
             </p>
           </div>
 
@@ -122,7 +123,7 @@ export default function PawgripPage() {
         </section>
       </div>
 
-      <div className="border-border-base bg-surface-base/90 fixed inset-x-0 bottom-0 z-20 border-t backdrop-blur">
+      <aside className="border-border-base bg-surface-base/90 fixed inset-x-0 bottom-0 z-20 border-t backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 py-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="min-w-0 flex-1">
@@ -151,7 +152,7 @@ export default function PawgripPage() {
                       >
                         <span className="text-text-em-high">Pair discount</span>
                         <span className="text-text-em-high ml-2 font-medium">
-                          -$5.00
+                          -$10.00
                         </span>
                       </div>
                     ))}
@@ -191,7 +192,7 @@ export default function PawgripPage() {
             </div>
           </div>
         </div>
-      </div>
+      </aside>
     </main>
   );
 }

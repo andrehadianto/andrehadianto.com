@@ -3,6 +3,7 @@
 import { Icon } from "@iconify-icon/react";
 
 import { Button } from "@/common/components/Button";
+import { cn } from "@/common/functions";
 
 export interface ProductCardProps {
   imgSrc: string;
@@ -24,7 +25,12 @@ export const ProductCard = ({
   onDecrease,
 }: ProductCardProps) => {
   return (
-    <div className="border-border-base bg-surface-base group col-span-1 w-full rounded-lg border p-2">
+    <div
+      className={cn(
+        "bg-surface-base group col-span-1 w-full rounded-lg border p-2",
+        quantity > 0 ? "border-element-primary" : "border-border-base",
+      )}
+    >
       <div className="relative h-[200px] w-full overflow-hidden rounded-lg">
         <img
           alt={`${name}-image`}
@@ -39,12 +45,20 @@ export const ProductCard = ({
           </div>
         </div>
 
-        {/* Price pill */}
-        {price > 0 && (
-          <div className="absolute bottom-2 left-2">
-            <div className="bg-surface-base/90 text-text-em-high border-border-base rounded-full border px-2 py-1 text-xs font-medium backdrop-blur">
-              ${price.toFixed(2)}
-            </div>
+        {/* Added + Price pills */}
+        {(quantity > 0 || price > 0) && (
+          <div className="absolute bottom-2 left-2 flex items-center gap-2">
+            {quantity > 0 && (
+              <div className="bg-surface-base/90 text-text-em-high border-element-primary flex items-center gap-1 rounded-full border px-2 py-1 text-xs font-medium backdrop-blur">
+                <Icon icon="mdi:check-bold" />
+                Added
+              </div>
+            )}
+            {price > 0 && (
+              <div className="bg-surface-base/90 text-text-em-high border-border-base rounded-full border px-2 py-1 text-xs font-medium backdrop-blur">
+                ${price.toFixed(2)}
+              </div>
+            )}
           </div>
         )}
 
