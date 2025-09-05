@@ -47,6 +47,7 @@ export default function PawgripPage() {
         );
 
         toast.success("Checkout completed successfully!");
+        setQuantities({});
         close();
       } catch (e) {
         // eslint-disable-next-line no-console
