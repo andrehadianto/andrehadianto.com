@@ -49,7 +49,7 @@ export const ProductCard = ({
         {(quantity > 0 || price > 0) && (
           <div className="absolute bottom-2 left-2 flex items-center gap-2">
             {quantity > 0 && (
-              <div className="bg-surface-base/90 text-text-em-high border-element-primary flex items-center gap-1 rounded-full border px-2 py-1 text-xs font-medium backdrop-blur">
+              <div className="bg-element-primary text-text-em-high flex items-center gap-1 rounded-full px-2 py-1 text-xs font-medium backdrop-blur">
                 <Icon icon="mdi:check-bold" />
                 Added
               </div>

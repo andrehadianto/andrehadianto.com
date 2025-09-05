@@ -1,58 +1,55 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { toast } from "react-hot-toast";
 
 import { Button } from "@/common/components/Button";
+import { CatIcon } from "@/common/components/CustomIcon";
 import { Text } from "@/common/components/Text";
-import { ProductCard } from "@/modules/pawgrip";
-
-type Product = {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  imgSrc: string;
-};
-
-const PRODUCTS: Product[] = [
-  {
-    id: "p1",
-    name: "Paw Grip v2 - Black",
-    description: "Matte texture, firm hold for daily use.",
-    price: 25.0,
-    imgSrc: "https://placehold.in/600x400?text=Black",
-  },
-  {
-    id: "p2",
-    name: "Paw Grip v2 - White",
-    description: "Clean look, reliable grip finish.",
-    price: 25.0,
-    imgSrc: "https://placehold.in/600x400?text=White",
-  },
-  {
-    id: "p3",
-    name: "Paw Grip v2 - Orange",
-    description: "Soft hue with the same trusted feel.",
-    price: 25.0,
-    imgSrc: "https://placehold.in/600x400?text=Pink",
-  },
-  {
-    id: "p4",
-    name: "Paw Grip v3 - Black",
-    description: "Cool tone, steady performance.",
-    price: 30.0,
-    imgSrc: "https://placehold.in/600x400?text=Blue",
-  },
-  {
-    id: "p5",
-    name: "Paw Grip v3 - White",
-    description: "Fresh style, consistent traction.",
-    price: 30.0,
-    imgSrc: "https://placehold.in/600x400?text=Green",
-  },
-];
+import { PRODUCTS, ProductCard, useConfirmationModal } from "@/modules/pawgrip";
 
 export default function PawgripPage() {
+  const [loading, setLoading] = useState(false);
+
+  const {
+    render: renderConfirmationModal,
+    open,
+    close,
+  } = useConfirmationModal({
+    loading,
+    onConfirm: async () => {
+      try {
+        setLoading(true);
+        await fetch(
+          "https://primary-production-3984b.up.railway.app/webhook/3cf18b9c-9b5b-419b-b0ed-26d8602d03b0",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              cart: cartItems.map((item) => ({
+                id: item.product.id,
+                name: item.product.name,
+                quantity: item.quantity,
+                price: item.product.price,
+                total: item.total,
+              })),
+              subtotal,
+              discount,
+              total,
+            }),
+          },
+        );
+
+        toast.success("Checkout completed successfully!");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+        toast.error("Failed to checkout. Please try again.");
+      } finally {
+        setLoading(false);
+        close();
+      }
+    },
+  });
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   const increase = (id: string) => {
@@ -97,9 +94,12 @@ export default function PawgripPage() {
       <div className="mx-auto max-w-6xl">
         <section>
           <div className="mb-6">
-            <Text as="h1" className="text-2xl font-semibold">
-              Pawgrip
-            </Text>
+            <div className="flex items-center gap-2">
+              <CatIcon className="size-8" />
+              <Text as="h1" className="text-2xl font-semibold">
+                PawGrip
+              </Text>
+            </div>
             <p className="text-text-em-med mt-1 text-sm">
               Point-of-sale web app for PawGrip. Add quantities and review your
               order.
@@ -144,18 +144,17 @@ export default function PawgripPage() {
                       </span>
                     </div>
                   ))}
-                  {discountCount > 0 &&
-                    Array.from({ length: discountCount }).map((_, index) => (
-                      <div
-                        key={`discount-${index}`}
-                        className="border-border-base h-fit rounded-md border px-3 py-1 text-xs"
-                      >
-                        <span className="text-text-em-high">Pair discount</span>
-                        <span className="text-text-em-high ml-2 font-medium">
-                          -$10.00
-                        </span>
-                      </div>
-                    ))}
+                  {discountCount > 0 && (
+                    <div
+                      key={`discount-tag`}
+                      className="border-border-base h-fit rounded-md border px-3 py-1 text-xs"
+                    >
+                      <span className="text-text-em-high">Pair discount</span>
+                      <span className="text-text-em-high ml-2 font-medium">
+                        -$10.00 × {discountCount}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -185,7 +184,9 @@ export default function PawgripPage() {
               </div>
               <Button
                 className="min-w-[120px]"
-                disabled={cartItems.length === 0}
+                disabled={cartItems.length === 0 || loading}
+                loading={loading}
+                onClick={open}
               >
                 Checkout
               </Button>
@@ -193,6 +194,19 @@ export default function PawgripPage() {
           </div>
         </div>
       </aside>
+
+      {renderConfirmationModal({
+        items: cartItems.map(({ product, quantity, total }) => ({
+          id: product.id,
+          name: product.name,
+          quantity,
+          total,
+        })),
+        subtotal,
+        discount,
+        discountCount,
+        total,
+      })}
     </main>
   );
 }

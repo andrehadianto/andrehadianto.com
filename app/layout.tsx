@@ -1,3 +1,5 @@
+import { Toaster } from "react-hot-toast";
+
 import { inter } from "@/common/fonts";
 import { cn } from "@/common/functions";
 
@@ -10,6 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={cn(inter.className, inter.variable)} lang="en">
+      <Toaster />
       <body>{children}</body>
     </html>
   );

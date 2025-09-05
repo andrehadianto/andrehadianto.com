@@ -85,3 +85,71 @@
 @theme {
   --spacing-fill-available: -webkit-fill-available;
 }
+
+/* CUSTOM ANIMATION */
+@theme {
+  --animate-slide-up-fade-in: slide-up-fade-in 300ms var(--ease-out-bounce);
+  @keyframes slide-up-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  --animate-slide-down-fade-out: slide-down-fade-out 300ms
+    var(--ease-out-bounce);
+  @keyframes slide-down-fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
+
+  --animate-fade-in: fade-in 300ms ease-out;
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  --animate-fade-out: fade-out 300ms ease-out;
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  --animate-swipe-up: swipe-up 150ms ease-out;
+  @keyframes swipe-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  --animate-swipe-down: swipe-down 150ms ease-out;
+  @keyframes swipe-down {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100%);
+    }
+  }
+}
