@@ -4,6 +4,7 @@ import { Icon } from "@iconify-icon/react";
 
 import { Button } from "@/common/components/Button";
 import { cn } from "@/common/functions";
+import { formatCurrency } from "@/modules/pawgrip";
 
 export interface ProductCardProps {
   imgSrc: string;
@@ -56,7 +57,7 @@ export const ProductCard = ({
             )}
             {price > 0 && (
               <div className="bg-surface-base/90 text-text-em-high border-border-base rounded-full border px-2 py-1 text-xs font-medium backdrop-blur">
-                ${price.toFixed(2)}
+                {formatCurrency(price)}
               </div>
             )}
           </div>

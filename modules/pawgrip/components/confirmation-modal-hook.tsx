@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { formatCurrency } from "../utils";
+
 import { Button } from "@/common/components/Button";
 import { Dialog } from "@/common/components/dialog/dialog";
 
@@ -103,7 +105,7 @@ export const ConfirmationModal = ({
                               {item.name} × {item.quantity}
                             </span>
                             <span className="text-text-em-high ml-2 font-medium">
-                              ${item.total.toFixed(2)}
+                              {formatCurrency(item.total)}
                             </span>
                           </div>
                         ))}
@@ -116,7 +118,7 @@ export const ConfirmationModal = ({
                               Pair discount
                             </span>
                             <span className="text-text-em-high ml-2 font-medium">
-                              -$10.00 × {cart.discountCount}
+                              -{formatCurrency(10)} × {cart.discountCount}
                             </span>
                           </div>
                         )}
@@ -128,21 +130,21 @@ export const ConfirmationModal = ({
                     <div className="flex justify-between">
                       <p className="text-text-em-high">Subtotal</p>
                       <p className="text-text-em-high">
-                        ${cart.subtotal.toFixed(2)}
+                        {formatCurrency(cart.subtotal)}
                       </p>
                     </div>
                     {cart.discount > 0 && (
                       <div className="flex justify-between">
                         <p className="text-text-em-high">Discount</p>
                         <p className="text-text-em-high">
-                          -{`$${cart.discount.toFixed(2)}`}
+                          -{formatCurrency(cart.discount)}
                         </p>
                       </div>
                     )}
                     <div className="flex justify-between font-semibold">
                       <p className="text-text-em-high">Total</p>
                       <p className="text-text-em-high">
-                        ${cart.total.toFixed(2)}
+                        {formatCurrency(cart.total)}
                       </p>
                     </div>
                   </div>

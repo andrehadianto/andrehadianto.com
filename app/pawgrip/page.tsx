@@ -1,12 +1,19 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 
 import { Button } from "@/common/components/Button";
 import { CatIcon } from "@/common/components/CustomIcon";
 import { Text } from "@/common/components/Text";
-import { PRODUCTS, ProductCard, useConfirmationModal } from "@/modules/pawgrip";
+import {
+  PRODUCTS,
+  ProductCard,
+  useConfirmationModal,
+  computeTotals,
+  formatCurrency,
+  type CartLineItem,
+} from "@/modules/pawgrip";
 
 export default function PawgripPage() {
   const [loading, setLoading] = useState(false);
@@ -25,7 +32,7 @@ export default function PawgripPage() {
           {
             method: "POST",
             body: JSON.stringify({
-              cart: cartItems.map((item) => ({
+              cart: cartItems.map((item: CartLineItem) => ({
                 id: item.product.id,
                 name: item.product.name,
                 quantity: item.quantity,
@@ -40,53 +47,32 @@ export default function PawgripPage() {
         );
 
         toast.success("Checkout completed successfully!");
+        close();
       } catch (e) {
         // eslint-disable-next-line no-console
         console.error(e);
         toast.error("Failed to checkout. Please try again.");
       } finally {
         setLoading(false);
-        close();
       }
     },
   });
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
-  const increase = (id: string) => {
+  const increase = useCallback((id: string) => {
     setQuantities((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }));
-  };
+  }, []);
 
-  const decrease = (id: string) => {
+  const decrease = useCallback((id: string) => {
     setQuantities((prev) => {
       const next = Math.max(0, (prev[id] ?? 0) - 1);
       return { ...prev, [id]: next };
     });
-  };
+  }, []);
 
-  const cartItems = useMemo(
-    () =>
-      PRODUCTS.filter((p) => (quantities[p.id] ?? 0) > 0).map((p) => ({
-        product: p,
-        quantity: quantities[p.id] ?? 0,
-        total: (quantities[p.id] ?? 0) * p.price,
-      })),
+  const { cartItems, subtotal, discountCount, discount, total } = useMemo(
+    () => computeTotals(quantities, PRODUCTS),
     [quantities],
-  );
-
-  const subtotal = useMemo(
-    () => cartItems.reduce((acc, item) => acc + item.total, 0),
-    [cartItems],
-  );
-
-  const totalItems = useMemo(
-    () => Object.values(quantities).reduce((acc, qty) => acc + (qty ?? 0), 0),
-    [quantities],
-  );
-  const discountCount = useMemo(() => Math.floor(totalItems / 2), [totalItems]);
-  const discount = useMemo(() => discountCount * 10, [discountCount]);
-  const total = useMemo(
-    () => Math.max(0, subtotal - discount),
-    [subtotal, discount],
   );
 
   return (
@@ -131,19 +117,21 @@ export default function PawgripPage() {
                 <p className="text-text-em-med text-sm">No items yet.</p>
               ) : (
                 <div className="grid min-h-40 grid-cols-2 content-start gap-2 overflow-auto pr-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                  {cartItems.map(({ product, quantity, total }) => (
-                    <div
-                      key={product.id}
-                      className="border-border-base h-fit rounded-md border px-3 py-1 text-xs"
-                    >
-                      <span className="text-text-em-high">
-                        {product.name} × {quantity}
-                      </span>
-                      <span className="text-text-em-high ml-2 font-medium">
-                        ${total.toFixed(2)}
-                      </span>
-                    </div>
-                  ))}
+                  {cartItems.map(
+                    ({ product, quantity, total }: CartLineItem) => (
+                      <div
+                        key={product.id}
+                        className="border-border-base h-fit rounded-md border px-3 py-1 text-xs"
+                      >
+                        <span className="text-text-em-high">
+                          {product.name} × {quantity}
+                        </span>
+                        <span className="text-text-em-high ml-2 font-medium">
+                          {formatCurrency(total)}
+                        </span>
+                      </div>
+                    ),
+                  )}
                   {discountCount > 0 && (
                     <div
                       key={`discount-tag`}
@@ -151,7 +139,7 @@ export default function PawgripPage() {
                     >
                       <span className="text-text-em-high">Pair discount</span>
                       <span className="text-text-em-high ml-2 font-medium">
-                        -$10.00 × {discountCount}
+                        -{formatCurrency(10)} × {discountCount}
                       </span>
                     </div>
                   )}
@@ -164,21 +152,21 @@ export default function PawgripPage() {
                 <div>
                   <span className="text-text-em-med">Subtotal</span>
                   <span className="text-text-em-high ml-2">
-                    ${subtotal.toFixed(2)}
+                    {formatCurrency(subtotal)}
                   </span>
                 </div>
                 {discount > 0 && (
                   <div>
                     <span className="text-text-em-med">Discount</span>
                     <span className="text-text-em-high ml-2">
-                      -{`$${discount.toFixed(2)}`}
+                      -{formatCurrency(discount)}
                     </span>
                   </div>
                 )}
                 <div className="font-semibold">
                   <span className="text-text-em-med">Total</span>
                   <span className="text-text-em-high ml-2">
-                    ${total.toFixed(2)}
+                    {formatCurrency(total)}
                   </span>
                 </div>
               </div>
