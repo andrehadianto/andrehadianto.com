@@ -147,6 +147,12 @@ export const ConfirmationModal = ({
                         {formatCurrency(cart.total)}
                       </p>
                     </div>
+                    <div className="flex justify-between font-semibold">
+                      <p className="text-text-em-high">To be transferred</p>
+                      <p className="text-text-em-high">
+                        {formatCurrency(cart.total * 0.7)}
+                      </p>
+                    </div>
                   </div>
                 </>
               )}

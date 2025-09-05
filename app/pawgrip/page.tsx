@@ -170,6 +170,14 @@ export default function PawgripPage() {
                     {formatCurrency(total)}
                   </span>
                 </div>
+                {total > 0 && (
+                  <div className="font-semibold">
+                    <span className="text-text-em-med">To be transferred</span>
+                    <span className="text-text-em-high ml-2">
+                      {formatCurrency(total * 0.7)}
+                    </span>
+                  </div>
+                )}
               </div>
               <Button
                 className="min-w-[120px]"
