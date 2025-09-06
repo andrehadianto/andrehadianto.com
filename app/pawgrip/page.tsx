@@ -97,9 +97,9 @@ export default function PawgripPage() {
                 review your order.
               </p>
               <Button
-                variant="secondary"
                 iconRight={<InfoIcon />}
                 size="sm"
+                variant="secondary"
                 onClick={openTutorialModal}
               >
                 First time? Click me!
