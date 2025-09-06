@@ -86,19 +86,19 @@ export default function PawgripPage() {
         <section>
           <div className="mb-6">
             <div className="flex items-center gap-2">
-              <CatIcon className="size-12" />
-              <Text as="h1" className="text-5xl font-semibold">
+              <CatIcon className="size-8 sm:size-12" />
+              <Text as="h1" className="text-2xl font-semibold sm:text-5xl">
                 PawGrip x CLIMば
               </Text>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col space-y-4 sm:flex-row sm:items-start sm:justify-between">
               <p className="text-text-em-med mt-1 text-sm">
                 Point-of-sale web app for PawGrip purchases. Add quantities and
                 review your order.
               </p>
               <Button
                 iconRight={<InfoIcon />}
-                size="sm"
+                size="xs"
                 variant="secondary"
                 onClick={openTutorialModal}
               >

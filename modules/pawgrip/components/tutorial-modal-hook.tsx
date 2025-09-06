@@ -1,6 +1,6 @@
 import { Button } from "@/common/components/Button";
 import { Dialog } from "@/common/components/dialog/dialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useTutorialModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +37,11 @@ interface TutorialModalProps {
 
 export const TutorialModal = ({ isOpen, setIsOpen }: TutorialModalProps) => {
   const [step, setStep] = useState(1);
+  const [isImageLoading, setIsImageLoading] = useState(true);
+
+  useEffect(() => {
+    setIsImageLoading(true);
+  }, [step]);
 
   const next = () => {
     if (step >= 3) {
@@ -65,11 +70,19 @@ export const TutorialModal = ({ isOpen, setIsOpen }: TutorialModalProps) => {
                   <h2 className="text-xl font-bold">
                     Step 1: Add items that are ordered
                   </h2>
-                  <div className="relative overflow-hidden rounded-lg">
+                  <div className="relative min-h-[258px] overflow-hidden rounded-lg">
+                    {isImageLoading && (
+                      <div className="absolute inset-0 grid place-items-center">
+                        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-transparent" />
+                      </div>
+                    )}
                     <img
                       src="./assets/pawgrips/step-1.gif"
                       alt="Step 1"
                       className="h-full w-full object-cover"
+                      loading="lazy"
+                      onLoad={() => setIsImageLoading(false)}
+                      onError={() => setIsImageLoading(false)}
                     />
                   </div>
                   <p>
@@ -83,11 +96,19 @@ export const TutorialModal = ({ isOpen, setIsOpen }: TutorialModalProps) => {
                   <h2 className="text-xl font-bold">
                     Step 2: Review the order
                   </h2>
-                  <div className="relative overflow-hidden rounded-lg">
+                  <div className="relative min-h-[258px] overflow-hidden rounded-lg">
+                    {isImageLoading && (
+                      <div className="absolute inset-0 grid place-items-center">
+                        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-transparent" />
+                      </div>
+                    )}
                     <img
                       src="./assets/pawgrips/step-2.gif"
-                      alt="Step 1"
+                      alt="Step 2"
                       className="h-full w-full object-cover"
+                      loading="lazy"
+                      onLoad={() => setIsImageLoading(false)}
+                      onError={() => setIsImageLoading(false)}
                     />
                   </div>
                   <p>You can review your cart before checking out.</p>
@@ -96,11 +117,19 @@ export const TutorialModal = ({ isOpen, setIsOpen }: TutorialModalProps) => {
               {step === 3 && (
                 <div className="space-y-4">
                   <h2 className="text-xl font-bold">Step 3: Checkout</h2>
-                  <div className="relative overflow-hidden rounded-lg">
+                  <div className="relative min-h-[258px] overflow-hidden rounded-lg">
+                    {isImageLoading && (
+                      <div className="absolute inset-0 grid place-items-center">
+                        <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-transparent" />
+                      </div>
+                    )}
                     <img
                       src="./assets/pawgrips/step-3.png"
-                      alt="Step 1"
+                      alt="Step 3"
                       className="h-full w-full object-cover"
+                      loading="lazy"
+                      onLoad={() => setIsImageLoading(false)}
+                      onError={() => setIsImageLoading(false)}
                     />
                   </div>
                   <p>This will notify me on what are sold.</p>
