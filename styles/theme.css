@@ -100,7 +100,7 @@
     }
   }
 
-  --animate-slide-down-fade-out: slide-down-fade-out 300ms
+  --animate-slide-down-fade-out: slide-down-fade-out 600ms
     var(--ease-out-bounce);
   @keyframes slide-down-fade-out {
     from {
@@ -109,7 +109,7 @@
     }
     to {
       opacity: 0;
-      transform: translateY(-100%);
+      transform: translateY(100%);
     }
   }
 

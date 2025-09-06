@@ -73,7 +73,8 @@ interface ConfirmationModalProps {
   cart?: ConfirmationCart;
   loading?: boolean;
 }
-export const ConfirmationModal = ({
+
+const ConfirmationModal = ({
   isOpen,
   setIsOpen,
   onConfirm,

@@ -27,7 +27,7 @@ export const DialogContent = ({
           {children}
           {showCloseButton && (
             <RDialog.Close asChild>
-              <button className="bg-element-tertiary absolute top-8 right-8 grid size-8 place-content-center rounded-full">
+              <button className="bg-element-tertiary absolute top-4 right-4 grid size-8 place-content-center rounded-full">
                 <CrossIcon />
               </button>
             </RDialog.Close>

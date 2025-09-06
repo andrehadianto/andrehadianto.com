@@ -3,3 +3,4 @@ export * from "./DotIcon";
 export * from "./Icon";
 export * from "./CrossIcon";
 export * from "./CatIcon";
+export * from "./InfoIcon";

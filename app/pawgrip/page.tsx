@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 
 import { Button } from "@/common/components/Button";
-import { CatIcon } from "@/common/components/CustomIcon";
+import { CatIcon, InfoIcon } from "@/common/components/CustomIcon";
 import { Text } from "@/common/components/Text";
 import {
   PRODUCTS,
@@ -14,9 +14,13 @@ import {
   formatCurrency,
   type CartLineItem,
 } from "@/modules/pawgrip";
+import { useTutorialModal } from "@/modules/pawgrip/components/tutorial-modal-hook";
 
 export default function PawgripPage() {
   const [loading, setLoading] = useState(false);
+
+  const { render: renderTutorialModal, open: openTutorialModal } =
+    useTutorialModal();
 
   const {
     render: renderConfirmationModal,
@@ -82,14 +86,19 @@ export default function PawgripPage() {
         <section>
           <div className="mb-6">
             <div className="flex items-center gap-2">
-              <CatIcon className="size-8" />
-              <Text as="h1" className="text-2xl font-semibold">
-                PawGrip
+              <CatIcon className="size-12" />
+              <Text as="h1" className="text-5xl font-semibold">
+                PawGrip x CLIMば
               </Text>
             </div>
-            <p className="text-text-em-med mt-1 text-sm">
-              Point-of-sale web app for PawGrip. Add quantities and review your
-              order.
+            <p className="text-text-em-med mt-1 flex items-center text-sm">
+              Point-of-sale web app for PawGrip purchases. Add quantities and
+              review your order.
+              <span className="ml-2">
+                <button onClick={openTutorialModal}>
+                  <InfoIcon className="size-4" />
+                </button>
+              </span>
             </p>
           </div>
 
@@ -117,7 +126,7 @@ export default function PawgripPage() {
               {cartItems.length === 0 ? (
                 <p className="text-text-em-med text-sm">No items yet.</p>
               ) : (
-                <div className="grid min-h-40 grid-cols-2 content-start gap-2 overflow-auto pr-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                <div className="grid min-h-40 grid-cols-2 content-start gap-2 overflow-auto pr-1 sm:grid-cols-3">
                   {cartItems.map(
                     ({ product, quantity, total }: CartLineItem) => (
                       <div
@@ -148,7 +157,7 @@ export default function PawgripPage() {
               )}
             </div>
 
-            <div className="flex shrink-0 items-center gap-4 self-end">
+            <div className="flex w-full shrink-0 flex-col items-end gap-4 self-end sm:w-auto">
               <div className="text-right text-sm">
                 <div>
                   <span className="text-text-em-med">Subtotal</span>
@@ -180,7 +189,7 @@ export default function PawgripPage() {
                 )}
               </div>
               <Button
-                className="min-w-[120px]"
+                className="w-full min-w-[120px]"
                 disabled={cartItems.length === 0 || loading}
                 loading={loading}
                 onClick={open}
@@ -204,6 +213,8 @@ export default function PawgripPage() {
         discountCount,
         total,
       })}
+
+      {renderTutorialModal()}
     </main>
   );
 }
