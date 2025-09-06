@@ -91,15 +91,20 @@ export default function PawgripPage() {
                 PawGrip x CLIMば
               </Text>
             </div>
-            <p className="text-text-em-med mt-1 flex items-center text-sm">
-              Point-of-sale web app for PawGrip purchases. Add quantities and
-              review your order.
-              <span className="ml-2">
-                <button onClick={openTutorialModal}>
-                  <InfoIcon className="size-4" />
-                </button>
-              </span>
-            </p>
+            <div className="flex items-center justify-between">
+              <p className="text-text-em-med mt-1 text-sm">
+                Point-of-sale web app for PawGrip purchases. Add quantities and
+                review your order.
+              </p>
+              <Button
+                variant="secondary"
+                iconRight={<InfoIcon />}
+                size="sm"
+                onClick={openTutorialModal}
+              >
+                First time? Click me!
+              </Button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
