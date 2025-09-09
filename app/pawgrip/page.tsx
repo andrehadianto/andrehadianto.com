@@ -81,7 +81,7 @@ export default function PawgripPage() {
   );
 
   return (
-    <main className="px-4 pt-10 pb-64 sm:pb-48 lg:pb-40">
+    <main className="px-4 pt-10 pb-82 sm:pb-48 lg:pb-40">
       <div className="mx-auto max-w-6xl">
         <section>
           <div className="mb-6">

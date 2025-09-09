@@ -19,7 +19,7 @@ export const PRODUCTS: Product[] = [
     name: "Paw Grip v2 - White",
     description: "Clean look, reliable grip finish.",
     price: 25.0,
-    imgSrc: "https://placehold.in/600x400?text=White",
+    imgSrc: "./assets/pawgrips/v2-white.jpeg",
   },
   {
     id: "p3",
