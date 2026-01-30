@@ -58,45 +58,52 @@ const SECTIONS = [
 
 const CAREER_ENTRIES = [
   {
-    role: "Senior Software Engineer",
-    company: "Company A",
-    period: "2023 - Present",
+    role: "Project Engineer",
+    company: "Airfoil Studio Singapore",
+    period: "Jun 2022 - Present",
     description:
-      "Led frontend architecture and built scalable web applications serving millions of users. Collaborated with cross-functional teams to deliver high-impact features.",
-    tags: ["React", "TypeScript", "Next.js", "Node.js", "AWS"],
+      "Led a team of 3 in high-paced projects to develop full-scale web applications from scratch. Frontend Engineer for Vapi, Sequence-holdings, Doc, and Hedra. Developed a full-scale web app used by ~1000 concurrent users at ETHDenver 2023 without downtime, reducing bundle size by 50%. Built highly interactive landing pages with integrated CMS, one retweeted by Vercel's CEO amassing 100k+ engagement on X.",
+    tags: ["TypeScript", "React", "Next.js", "Python", "Vercel", "Railway"],
   },
   {
-    role: "Software Engineer",
-    company: "Company B",
-    period: "2021 - 2023",
+    role: "Software Engineer, SupplyAlly",
+    company: "GovTech Singapore",
+    period: "Nov 2020 - Jun 2022",
     description:
-      "Developed and maintained full-stack applications with a focus on performance optimization and user experience. Implemented CI/CD pipelines and improved deployment workflows.",
-    tags: ["React", "Python", "PostgreSQL", "Docker", "GraphQL"],
+      "Developed features and test cases using TypeScript and Python with React Expo and a Serverless/AWS backend for a mobile app handling up to 4500 transactions per second, used by 8000 volunteers nationwide for distributing masks, vouchers, and Trace-Together tokens. Implemented a secure notification service with double encryption (JWK and JWE) via SGNotify and SingPass.",
+    tags: ["TypeScript", "Python", "React Native", "AWS", "Serverless"],
   },
   {
-    role: "Junior Software Engineer",
-    company: "Company C",
-    period: "2019 - 2021",
+    role: "Software Engineer, GoWallet",
+    company: "GovTech Singapore",
+    period: "Jul 2021 - Jun 2022",
     description:
-      "Built responsive web interfaces and RESTful APIs. Contributed to design system development and component library.",
-    tags: ["JavaScript", "Vue.js", "Express", "MongoDB"],
+      "Planned and developed a TypeScript backend and DynamoDB database schema for credit disbursement for government clients. Implemented and maintained features and test cases on a TypeScript backend using Serverless technologies on AWS.",
+    tags: ["TypeScript", "DynamoDB", "AWS", "Serverless"],
   },
 ];
 
 const PROJECTS = [
   {
-    name: "Project Alpha",
+    name: "react-mosaicity",
     description:
-      "A full-stack web application for managing workflows and automating repetitive tasks. Features real-time collaboration and integrations with third-party services.",
-    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
-    link: "#",
+      "A React component library to visualize data, aimed at providing an alternative to charts. Garnered over 3,000 impressions and 700 downloads in the first week of launch.",
+    tags: ["React", "TypeScript", "npm"],
+    link: "https://github.com/andrehadianto/react-mosaicity",
   },
   {
-    name: "Project Beta",
+    name: "Turnip Stalk Market Watch",
     description:
-      "An open-source component library built with accessibility and performance in mind. Used by multiple teams across the organization.",
-    tags: ["React", "Storybook", "Tailwind CSS"],
-    link: "#",
+      "A web application to track and visualize the stock market feature in Animal Crossing game series. Garnered over 200 users within 4 days of launch.",
+    tags: ["React", "JavaScript"],
+    link: "https://andrehadianto.github.io/turnip-watch-oh",
+  },
+  {
+    name: "NFT Homepage Template",
+    description:
+      "Designed and developed a web application template for an NFT project to showcase project and minting on the Solana blockchain.",
+    tags: ["TypeScript", "React", "Next.js", "Solana"],
+    link: "https://peckwars.com",
   },
 ];
 
